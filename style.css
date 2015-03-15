@@ -1,0 +1,36 @@
+.metro .canvas, .metro .elementsPanel {
+  display: inline-block;
+  vertical-align: top; }
+.metro .canvas {
+  border: 1px solid gray;
+  position: relative; }
+  .metro .canvas .firstCanvas, .metro .canvas .secondCanvas {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0.55; }
+  .metro .canvas .firstCanvas {
+    z-index: 2; }
+  .metro .canvas .secondCanvas {
+    z-index: 1; }
+.metro .elementsPanel ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px; }
+.metro .elements {
+  height: 200px;
+  width: 150px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  border: 1px solid gray; }
+  .metro .elements .deleteitem {
+    display: inline-block; }
+    .metro .elements .deleteitem:hover {
+      color: blue; }
+.metro .deletePoint {
+  display: inline-block;
+  color: red; }
+  .metro .deletePoint:hover {
+    color: blue; }
+.metro #dawToCanvas {
+  display: none; }

@@ -1,0 +1,37 @@
+<img id="dawToCanvas" src='images/daw.png'>
+<div class="canvas" style="height: {{canvasHeight}}px; width: {{canvasWidth}}px; background-image:url('images/metro.jpg'); background-size: 100%;">
+  <canvas class="firstCanvas" width="{{canvasWidth}}" height="{{canvasHeight}}">canvas not supported</canvas>
+  <canvas class="secondCanvas" width="{{canvasWidth}}" height="{{canvasHeight}}"></canvas>
+</div>
+<div class="elementsPanel">
+  <ul ng-init="figure='none'">
+    <li><label><input type="checkbox" ng-model="opacityVisibility">убрать прозрачность</label></li>
+    <li><label>color<select ng-options="c.rgb.join() as c.name for c in colors" ng-model="color"></select></label></li>
+    <li><label><input type="radio" ng-model="figure" value="none">none(selected)</label></li>
+    <li><label><input type="radio" ng-model="figure" value="circle">circle</label></li>
+    <li><label><input type="radio" ng-model="figure" value="line">line</label></li>
+    <li><label><input type="radio" ng-model="figure" value="station">station</label></li>
+  </ul>
+  <div class="elements">
+    <div ng-repeat="e in elements track by $index" style="color:rgb({{e.color}})">
+      <label>
+        <input type="radio" name="pos" ng-model="$parent.selectorPosition" value="{{$index}}">{{e.figure}}<div ng-click="deleteItem($index)" class="deleteitem">[x]</div>
+      </label>
+    </div>
+  </div>
+  lWidth:<input type="text" ng-model="elements[selectorPosition].lineWidth" ng-change="$emit('storageUpdate');queue.push(['update']);">
+  <div ng-if="elements[selectorPosition].figure === 'station'">
+    title: <input type='text' ng-model="elements[selectorPosition].title.name" ng-change="$emit('storageUpdate');$parent.queue.push(['update'])"><br>
+    <input type="number" ng-model="elements[selectorPosition].title.x" ng-change="$emit('storageUpdate');$parent.queue.push(['update'])">
+    <input type="number" ng-model="elements[selectorPosition].title.y" ng-change="$emit('storageUpdate');$parent.queue.push(['update'])">
+    <br><br>
+  </div>
+  <div ng-repeat="e in elements[selectorPosition].points track by $index">
+    <input type="number" ng-model="e.x" ng-change="$emit('storageUpdate');$parent.queue.push(['update'])">
+    <input type="number" ng-model="e.y" ng-change="$emit('storageUpdate');$parent.queue.push(['update'])">
+    <div class="deletePoint" ng-click="deletePoint($index)">[x]</div>
+  </div>
+  load: {{queueBenchmarkDetector}}<br>
+</div>
+  {{elementsColorsAlready}}<br>
+  {{elements | json}}

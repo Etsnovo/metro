@@ -1,0 +1,51 @@
+.metro {
+  .canvas, .elementsPanel {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .canvas {
+    border: 1px solid gray;
+    position: relative;
+    .firstCanvas, .secondCanvas {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      opacity: 0.55;
+    }
+    .firstCanvas {
+      z-index: 2;
+    }
+    .secondCanvas {
+      z-index: 1;
+    }
+  }
+  .elementsPanel ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+  }
+  .elements {
+    height: 200px;
+    width: 150px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border: 1px solid gray;
+    .deleteitem {
+      display: inline-block;
+      
+      &:hover {
+        color: blue;
+      }
+    }
+  }
+  .deletePoint {
+    display: inline-block;
+    color: red;
+    &:hover {
+      color: blue;
+    }
+  }
+  #dawToCanvas {
+    display: none;
+  }
+}
